@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t anvargzv/front-prod -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true anvargzv/front-prod npm run test
